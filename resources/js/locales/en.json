@@ -1,0 +1,88 @@
+{
+    "home": {
+
+        "location": "Search on the map",
+        "search": "Find your next stay",
+        "search2": "Search home, CarRental or traveling Companion",
+        "Fellowtraveler": "Fellow traveler",
+        "FindCarRental": "Vehicle",
+        "FindRenthome": "Home",
+        "Recentads": "Recent َAds",
+        "login": "Login",
+        "register": "Register",
+        "profile": "Profile",
+        "messages": "Messages",
+        "Whatsgoingoncity": "What’s in the city?",
+        "Goodfoodcoolplace": "Good food & place",
+        "Introducecity": "Offer me a Place",
+        "Popularcities": "Popular cities",
+        "Wherewegoincity": " We should go to ",
+        "darkMode": "darkMode",
+        "language": "language",
+        "viewmore": "view more",
+        "Login": "Login",
+        "Contactus": "Contact us",
+        "Ourservices": "Our services",
+        "Aboutus": "About us",
+        "InjaOnja": " \"InjaOnja is a startup that provide platform for immigrants and travellers to\\nconnect with hosts from their homelandoffering culturally familiar\\naccommodations and vehicle rentals\\n and finding fellow travellers and tour\\n organizers. Our initial focus is on the\\n Iranian community abroad, leveragin\\n our familiarity with Iranian culture to\\n ensure comfort and trust.\",\n",
+        "ServiceDescription": "InjaOnja connects immigrants and travellers with hosts from their homeland,\noffering culturally familiar short-term accommodations and vehicle rentals.\nUsers can also find travel partners to share their journeys and split expenses, making the experience more enjoyable and cost-effective. \nAdditionally, the app allows users to organize tourist tours.\nEach version of the app is available in the local language, ensuring ease of use.",
+        "contactus": "contact us",
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message",
+        "send": "Send",
+        "whoweare": "Who We Are?",
+        "Ourvaluesandvision":  "Our Values And Vision",
+        "login2": "Login",
+        "register2": "Create an account",
+
+        "slides": [
+            {
+                "image": "/images/login (1).jpg",
+                "text12": "Accommodation, vehicle and tourist tour"
+            },
+            {
+                "image": "/images/login (2).jpg",
+                "text12": "Be the host and guest of your compatriot"
+            },
+            {
+                "image": "/images/login (3).jpg",
+                "text12": "Find your travel companions"
+            }
+        ],
+
+        "slides2": [
+            {
+                "text2": " Rent and rent your accommodation all over the world..."
+            },
+            {
+                "text2": "Rent your vehicle to your compatriots or rent from them..."
+            },
+            {
+                "text2": "Go on a trip together, organize your own local tours..."
+            }
+        ],
+
+    "createAccount": "Create an account",
+    "signIn": "Sign in",
+    "fillDetails": "Fill in your account details",
+    "name": "Name",
+    "surname": "Surname",
+    "password": "Password",
+    "rememberPassword": "Remember the password",
+    "submit": "Register",
+    "title": "FOR EVERYONE, FOR EVERYWHERE",
+    "welcome": "Welcome",
+    "signIn2": "Sign in to your account",
+    "submit2": "Login",
+    "forgotPassword": "Forgot your password?",
+    "instruction": "To recover your password, please enter your email.",
+    "email": "Email",
+    "submit3": "Send reset link",
+    "backToLogin": "Back to login page",
+    "resetLinkSent": "Reset link has been sent to your email.",
+    "error": "An error occurred. Please try again.",
+    "enterEmail": "Please enter your email."
+   }
+}
