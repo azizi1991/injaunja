@@ -2,19 +2,16 @@
 <template >
     <v-app :class="themeClass" class="app-background">
         <div >
-            <!-- نمایش لودینگ -->
             <div v-if="isLoading" class="loading-container">
                 <v-progress-circular indeterminate color="warning"></v-progress-circular>
             </div>
 
-            <!-- محتوای اصلی -->
             <div v-else>
                 <div class="main-container" style="margin-bottom: 100px" >
                     <div class="logo-container">
                         <img :src="logo" alt="Company Logo" class="logo" />
                     </div>
 
-                    <!-- بخش آیکون‌ها و ایمیل شرکت -->
                     <div class="contact-info">
                         <div class="email">
                             <p>Email: contact@company.com</p>
