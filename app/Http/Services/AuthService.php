@@ -24,11 +24,13 @@ class AuthService
         $user = $this->userRepository->findByEmail($userDTO->getEmail());
 
         if ($user && password_verify($userDTO->getPassword(), $user->password)) {
-            // Login successful, return token or success message
-            return response()->json(['message' => 'Login successful', 'token' => 'your_token_here']);
+            session(['user' => $user]);
+            return response()->json(['success' => true, 'message' => 'Login successful']);
         } else {
-            // Login failed, return error message
-            return response()->json(['error' => 'Invalid credentials'], 401);
+
+            return response()->json(['success' => false, 'message' => 'Invalid credentials'], 401);
         }
     }
+
+
 }

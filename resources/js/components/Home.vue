@@ -534,19 +534,19 @@ export default {
         return {
             drawer: false,
             isMobile: false,
-            isLoading: true, // متغیر برای وضعیت لودینگ
+            isLoading: true,
 
             isLoggedIn: false,
             loginDialog: false,
             selectedRole: null,
-            userRole: '', // برای ذخیره نقش کاربر
+            userRole: '',
             showMenu: false,
             showModal: false,
             modalKey: 0,
             showOtherMethods: false,
             showRegisterModal: false,
-            locationQuery: '', // اضافه کردن یک متغیر جدید برای فیلد Location
-            search2Query: '', // اضافه کردن یک متغیر جدید برای فیلد Search 2
+            locationQuery: '',
+            search2Query: '',
             searchDialog: false,
             searchQuery: '',
             showMap: false,
@@ -563,13 +563,13 @@ export default {
             timelineEvents: [
 
                 {
-                    title: 'InjaOnja',
-                    text: 'InjaOnja is a startup that provide platform for immigrants and travellers to\\nconnect with hosts from their homelandoffering culturally familiar\\naccommodations and vehicle rentals\\n and finding fellow travellers and tour\\n organizers. Our initial focus is on the\\n Iranian community abroad, leveragin\\n our familiarity with Iranian culture to\\n ensure comfort and trust',
+                    title: 'injaunja',
+                    text: 'injaunja is a startup that provide platform for immigrants and travellers to\\nconnect with hosts from their homelandoffering culturally familiar\\naccommodations and vehicle rentals\\n and finding fellow travellers and tour\\n organizers. Our initial focus is on the\\n Iranian community abroad, leveragin\\n our familiarity with Iranian culture to\\n ensure comfort and trust',
                     color: 'primary'
                 },
                 {
                     title: 'Service Description',
-                    text: 'InjaOnja connects immigrants and travellers with hosts from their homeland,\noffering culturally familiar short-term accommodations and vehicle rentals.\nUsers can also find travel partners to share their journeys and split expenses, making the experience more enjoyable and cost-effective. \nAdditionally, the app allows users to organize tourist tours.\nEach version of the app is available in the local language, ensuring ease of use.',
+                    text: 'injaunja connects immigrants and travellers with hosts from their homeland,\noffering culturally familiar short-term accommodations and vehicle rentals.\nUsers can also find travel partners to share their journeys and split expenses, making the experience more enjoyable and cost-effective. \nAdditionally, the app allows users to organize tourist tours.\nEach version of the app is available in the local language, ensuring ease of use.',
 
                     color: 'success'
                 }
@@ -593,7 +593,7 @@ export default {
 
 
             selectedCategory: null,
-            showCategoryImages: true, // متغیر جدید برای کنترل نمایش تصاویر
+            showCategoryImages: true,
             categories: {
                 travelingCompanion: {
                     title: "Find traveling Companion",
@@ -672,7 +672,6 @@ export default {
 
                     hostName: "hami misaq"
                 },
-                // مکان‌های بیشتر در صورت نیاز
             ]
         };
     },
@@ -703,19 +702,19 @@ export default {
         },
         buttonFontSize() {
             if (this.language === 'fa') {
-                if (window.innerWidth > 960) { // دسکتاپ
+                if (window.innerWidth > 960) {
                     return '15px';
-                } else if (window.innerWidth > 600) { // تبلت
+                } else if (window.innerWidth > 600) {
                     return '13px';
-                } else { // موبایل
+                } else {
                     return '11px';
                 }
             } else {
-                if (window.innerWidth > 960) { // دسکتاپ
+                if (window.innerWidth > 960) {
                     return '12px';
-                } else if (window.innerWidth > 600) { // تبلت
+                } else if (window.innerWidth > 600) {
                     return '10px';
-                } else { // موبایل
+                } else {
                     return '8px';
                 }
             }
@@ -723,19 +722,15 @@ export default {
     },
     methods:  {
         loadSlides(language) {
-            // پیاده‌سازی منطق برای بارگذاری اسلایدها بر اساس زبان
             console.log('Loading slides for language:', language);
         },
         loadSlides2(language) {
-            // پیاده‌سازی منطق برای بارگذاری مجموعه دوم اسلایدها
             console.log('Loading slides 2 for language:', language);
         },
         startSlideShow1() {
-            // منطق شروع نمایش اسلایدشو ۱
             console.log('Starting slideshow 1');
         },
         startSlideShow2() {
-            // منطق شروع نمایش اسلایدشو ۲
             console.log('Starting slideshow 2');
         },
 
@@ -744,11 +739,11 @@ export default {
         },
 
         openModal() {
-            this.modalKey += 1; // تغییر کلید برای تجدید نظر کامپوننت
-            this.showModal = true; // نمایش مودال
+            this.modalKey += 1;
+            this.showModal = true;
         },
         closeModal() {
-            this.showModal = false; // بستن مودال
+            this.showModal = false;
         },
 
         openWhatsApp() {
@@ -757,7 +752,6 @@ export default {
 
 
         isEnglish(text) {
-            // این تابع بررسی می‌کند که آیا متن شامل حروف انگلیسی است یا نه
             return /^[A-Za-z\s]+$/.test(text);
         },
         scrollToAboutUs() {
@@ -776,11 +770,8 @@ export default {
 
         toggleFavorite(place) {
             place.isFavorite = !place.isFavorite;
-            // در اینجا می‌توانید مکانیزم ذخیره‌سازی در لوکال استوریج یا پایگاه داده را نیز اضافه کنید
             if (place.isFavorite) {
-                // ذخیره در لیست علاقه‌مندی‌ها
             } else {
-                // حذف از لیست علاقه‌مندی‌ها
             }},
 
         openSearchDialog() {
@@ -810,21 +801,17 @@ export default {
         viewMore(banner) {
             alert(banner.details);
         },
-//برای اینکه اندازه فونت‌ها در صورت تغییر اندازه صفحه (resize) به‌روزرسانی شود،
-// می‌توانید یک listener به رویداد resize اضافه کنید و computed property را دوباره محاسبه کند.
         updateButtonFontSize() {
-            this.$forceUpdate(); // محاسبه مجدد computed properties
+            this.$forceUpdate();
         },
 
         beforeDestroy() {
             window.removeEventListener('resize', this.updateButtonFontSize);
             window.addEventListener('load', () => {
-                // اینجا نیازی به کد جاوااسکریپت نیست زیرا انیمیشن با CSS کنترل می‌شود.
             });
 
         },
 
-        // اصلاح t(key)
         t(key) {
             const keys = key.split('.');
             let result = this.translations[this.language] || {};
@@ -842,10 +829,8 @@ export default {
 
         selectCategory(category) {
             if (this.selectedCategory === category) {
-                // اگر دسته‌بندی تکراری باشد، نمایش تصاویر را غیرفعال می‌کنیم
                 this.showCategoryImages = !this.showCategoryImages;
             } else {
-                // اگر دسته‌بندی جدید انتخاب شود، تصاویر را نمایش می‌دهیم
                 this.selectedCategory = category;
                 this.showCategoryImages = true;
             }
@@ -857,17 +842,9 @@ export default {
             this.loadSlides2(this.language);
         },
 
-        /*toggleDarkMode() {
-            this.isDark = !this.isDark;
-            localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
-        },*/
-        /*navigateTo(route) {
-            console.log(`Navigating to ${route}`);
-        },*/
         searchHosts() {
             const results = [];
 
-            // جستجو بر اساس دسته‌بندی و متن وارد شده
             Object.keys(this.categories).forEach(categoryKey => {
                 const items = this.categories[categoryKey].items.filter(item =>
                     item.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
@@ -877,7 +854,6 @@ export default {
                 results.push(...items);
             });
 
-            // نمایش نتایج جستجو
             if (results.length) {
                 this.selectedCategoryItems = results;
             } else {
@@ -893,10 +869,10 @@ export default {
 
             const customIcon = L.icon({
                 iconUrl: '/images/icon.png',
-                iconSize: [25, 41], // سایز آیکون
-                iconAnchor: [12, 41], // نقطه انکور آیکون
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
                 popupAnchor: [1, -34],
-                shadowSize: [41, 41] // سایز سایه
+                shadowSize: [41, 41]
             });
 
             if (navigator.geolocation) {
@@ -933,44 +909,32 @@ export default {
     mounted() {
         const savedLanguage = localStorage.getItem('language');
         if (savedLanguage) {
-            this.language = savedLanguage; // بازیابی زبان ذخیره شده
+            this.language = savedLanguage;
         }
         this.loadSlides(this.language);
         this.loadSlides2(this.language);
 
         setTimeout(() => {
             this.isLoading = false;
-        }, 1000); // تاخیر 1 ثانیه برای نمایش لودینگ
+        }, 1000);
 
         this.startSlideShow1();
         this.startSlideShow2();
 
 
-        /*
-
-
-            lottie.loadAnimation({
-                    container: this.$el.querySelector('#lottie-container'),
-                    renderer: 'svg',
-                    loop: true,
-                    autoplay: true,
-                    Url: "https://lottie.host/2991cdd7-0364-4ce9-8590-103335850894/XDRtmBU36r.json",
-                });
-        */
 
         setTimeout(() => {
-            this.isLoading = false; // تغییر وضعیت لودینگ به false پس از بارگذاری
-        }, 1000); // تاخیر 2 ثانیه برای نمایش لودینگ
+            this.isLoading = false;
+        }, 1000);
 
         this.checkMobile();
         window.addEventListener('resize', this.checkMobile);
 
         const main3 = document.querySelector('.main3-container');
         if (main3) {
-            main3.classList.add('fade-in'); // اضافه کردن کلاس انیمیشن
+            main3.classList.add('fade-in');
         }
 
-        //  برای اینکه اندازه فونت‌ها در صورت تغییر اندازه صفحه (resize) به‌روزرسانی شود
 
         window.addEventListener('resize', this.updateButtonFontSize);
 
@@ -999,12 +963,11 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px; /* ارتفاع مورد نظر برای لودینگ */
+    height: 200px;
 }
 
 @media (max-width: 1180px) {
     .login-modal  {
-        /* تنظیمات خاص برای این اندازه */
         position: absolute;
         top: 0;
         left: 0;
@@ -1021,33 +984,6 @@ export default {
     z-index: 10;
 }
 
-/* افکت هاور برای تمامی دکمه‌ها */
-/*
-.v-btn:hover {
-    transform: scale(1.1);
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    background-color: #FFCC00 !important; !* رنگ پس‌زمینه تغییر یافته *!
-}
-.hover-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.5); !* پس‌زمینه شفاف برای بخش اطلاعات *!
-    color: red; !* رنگ متن قرمز *!
-    padding: 10px;
-    text-align: center;
-    transition: opacity 0.3s ease;
-}
-.red--text {
-    color: red !important;
-}
-
-.hover-title {
-    margin: 0;
-}
-
-*/
 .mobile-layout .button-container11 {
     display: flex;
     flex-direction: column;
@@ -1061,26 +997,21 @@ export default {
     gap: 10px;
 }
 
-/*
-.button-row.city-button:hover {
-    background-color: #8EACCD;
-}
-*/
 .logo-container {
     position: absolute;
     top: 20px;
-    left: 20px; /* قرار دادن لوگو در سمت چپ صفحه */
+    left: 20px;
     z-index: 1000;
 }
 
 .logo {
-    max-height: 150px; /* ارتفاع لوگو */
-    max-width: 200%; /* عرض لوگو */
+    max-height: 150px;
+    max-width: 200%;
 }
 
 @media (max-width: 600px) {
     .logo {
-        height: 70px; /* اندازه لوگو برای موبایل */
+        height: 70px;
         width: auto;
     }
 }
@@ -1118,7 +1049,7 @@ v-app {
     color: white;
     margin: 0;
     padding: 0;
-    min-height: 100vh; /* ارتفاع کل صفحه */
+    min-height: 100vh;
     box-sizing: border-box;
 }
 
@@ -1190,16 +1121,6 @@ html, body {
     padding: 12px 16px;
 }
 
-/*
-.equal-btn1 {
-    background-color: white;
-    border: 1px saddlebrown;
-    color: black;
-    min-width: 100px;
-    font-size: 16px;
-    padding: 12px 16px;
-}
-*/
 
 
 @media (max-width: 1180px) {
@@ -1223,16 +1144,8 @@ html, body {
         top: 0;
         height: 100vh;
         z-index: 1000;
-        text-align: right; /* متن‌ها و دکمه‌ها به راست تراز شوند */
+        text-align: right;
     }
-/*
-    .buttons-container {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
-        padding: 20px;
-    }*/
 
     .button1-container, .buttons2-container {
         flex-direction: column;
@@ -1284,19 +1197,17 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px; /* فاصله در حالت موبایل */
+    margin-bottom: 20px;
 }
 
-/* استایل کلی */
 .categories-slider {
     padding: 20px 0;
     background-color: transparent;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* شروع از بالای صفحه */
+    justify-content: flex-start;
 }
 
-/* انیمیشن ورود */
 .categories-slider [data-aos] {
     opacity: 0;
     transform: translateY(20px);
@@ -1308,7 +1219,6 @@ html, body {
     transform: translateY(0);
 }
 
-/* تنظیمات تصویر */
 .category-image {
     width: 100px;
     cursor: pointer;
@@ -1329,16 +1239,15 @@ html, body {
     background-color: orange;
 }
 
-/* دکمه‌ها */
 .category-btn {
     border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.4); /* پس‌زمینه شیشه‌ای (نیمه‌شفاف) */
+    background-color: rgba(255, 255, 255, 0.4);
     border-color: black;
     color: black;
     transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
     max-width: 150px;
     width: 100%;
-    margin-top: 10px; /* فاصله از تصویر */
+    margin-top: 10px;
 }
 
 .category-btn:hover {
@@ -1347,11 +1256,10 @@ html, body {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* تنظیمات دسته‌بندی در دسکتاپ */
 @media (min-width: 1025px) {
     .categories-slider {
-        padding-top: 80px; /* فاصله از appbar */
-        margin-top: 0; /* از هر گونه margin-top که محتوا را به وسط برده جلوگیری شود */
+        padding-top: 80px;
+        margin-top: 0;
     }
     .category-col {
         display: flex;
@@ -1360,12 +1268,11 @@ html, body {
     }
 
     .category-btn-english {
-        font-size: 11px; /* سایز فونت 8 پیکسل برای متن انگلیسی */
+        font-size: 11px;
     }
 
 }
 
-/* تنظیمات دسته‌بندی در موبایل */
 @media (max-width: 600px) {
     .category-col {
         display: flex;
@@ -1388,10 +1295,10 @@ html, body {
         padding: 6px 12px;
         font-size: 11px;
         max-width: none;
-        width: 100%; /* دکمه‌ها تمام عرض ستون را بگیرند */
+        width: 100%;
     }
     .category-btn-english {
-        font-size: 7px; /* سایز فونت 8 پیکسل برای متن انگلیسی */
+        font-size: 7px;
     }
     .email p {
         margin: 0;
@@ -1410,7 +1317,6 @@ html, body {
 
 }
 
-/* Styles for the vertical buttons */
 .button-container11 {
     position: fixed;
     padding-top: 20px;
@@ -1421,34 +1327,33 @@ html, body {
     flex-direction: column;
     gap: 10px;
     z-index: 1000;
-    justify-content: flex-start; /* یا center یا space-between بسته به نیاز */
-    flex-wrap: wrap; /* برای اطمینان از شکسته شدن دکمه‌ها در اندازه کوچک‌تر */
-    gap: 10px; /* فاصله بین دکمه‌ها */
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
 }
-/* تنظیمات برای صفحه نمایش موبایل */
 @media (max-width: 1180px) {
     .button-container {
-        flex-direction: column; /* دکمه‌ها را زیر هم قرار می‌دهد */
+        flex-direction: column;
         align-items: center;
     }
 }
 .square-button {
     width: 100px;
     height: 100px;
-    background-color: rgba(255, 255, 255, 0.4); /* پس‌زمینه شیشه‌ای (نیمه‌شفاف) */
-    border: 2px solid #FFA500; /* بوردر نارنجی */
-    color: black; /* رنگ متن نارنجی */
-    border-radius: 10px; /* گوشه‌های گرد */
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid #FFA500;
+    color: black;
+    border-radius: 10px;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    overflow: hidden; /* جلوگیری از خارج شدن متن */
+    overflow: hidden;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .square-button:hover {
     background-color: orange;
-    transform: scale(1.05); /* انیمیشن تغییر سایز در حالت هاور */
+    transform: scale(1.05);
 }
 
 
@@ -1468,14 +1373,11 @@ html, body {
 
 
 }
-/* استایل‌های عمومی */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
-/* استایل برای main2 و عناصر داخلی آن */
-/* استایل برای main2 و عناصر داخلی آن */
 .category-image, .logo, .main2-container, .button-container11,
 .categories-slider, .equal-btn1, .equal-btn, .category-btn,
 .square-button {
@@ -1485,7 +1387,6 @@ body {
     animation-fill-mode: forwards;
 }
 
-/* استایل برای انیمیشن ورود */
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -1501,7 +1402,6 @@ body {
     }
 }
 
-/* اعمال انیمیشن به عناصر */
 .category-image, .main2-container, .button-container11,
 .categories-slider, .equal-btn1, .equal-btn,
 .category-btn, .square-button {
@@ -1509,7 +1409,6 @@ body {
     animation-delay: 0.5s;
 }
 
-/* انیمیشن برای لوگو */
 .logo {
     animation-name: fadeInUp;
     animation-delay: 0.7s;
@@ -1521,7 +1420,7 @@ body {
 
 .contact-info {
     position: absolute;
-    bottom: 250px; /* تنظیم این مقدار بر اساس نیاز */
+    bottom: 250px;
     left: 20px;
     display: flex;
     flex-direction: column;
@@ -1579,9 +1478,9 @@ body {
     position: absolute;
     bottom: 20px;
     left: 5px;
-    width: calc(100% - 200px); /* برای ایجاد فاصله از دو طرف صفحه */
+    width: calc(100% - 200px);
     height: calc(100% - 50px);
-    background-color: rgba(0, 0, 0, 0.5); /* تنظیم رنگ پس‌زمینه به مشکی با شفافیت 50% */
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 20%;
     padding-top: 500px;
     padding-right: 700px;
@@ -1617,8 +1516,8 @@ body {
         position: absolute;
         bottom: 60px;
         left: 40px;
-        width: calc(100% ); /* برای ایجاد فاصله از دو طرف صفحه */
-        background-color: rgba(0, 0, 0, 0.5); /* تنظیم رنگ پس‌زمینه به مشکی با شفافیت 50% */
+        width: calc(100% );
+        background-color: rgba(0, 0, 0, 0.5);
         border-radius: 20%;
         height: auto;
         padding-top: 120px;
@@ -1629,10 +1528,10 @@ body {
 
 }
 .v-container {
-    margin-top: 10px; /* یا هر مقدار دیگری که مناسب باشد */
+    margin-top: 10px;
 }
 .my-slideshow-container {
-    background-color: inherit; /* رنگ پس زمینه مشابه پس زمینه اصلی صفحه */
+    background-color: inherit;
 }
 
 .my-slideshow .v-carousel-item {
@@ -1640,7 +1539,7 @@ body {
 }
 
 .banner-image {
-    width: 50%; /* برای دسکتاپ */
+    width: 50%;
 
 }
 .banner-image + .v-btn {
@@ -1649,38 +1548,34 @@ body {
 
 @media (max-width: 600px) {
     .banner-image {
-        width: 70%; /* برای موبایل */
+        width: 70%;
     }
 }
 .banner-image + .v-btn {
     width: 25%;
-    margin: 0 auto; /* وسط‌چین کردن دکمه */
+    margin: 0 auto;
 }
 
-/* افکت هاور برای تمامی دکمه‌ها */
 .v-btn:hover {
     transform: scale(1.1);
     transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
     background-color: #FFCC00 !important; /* رنگ پس‌زمینه تغییر یافته */
 }
 
-/* افکت هاور برای عکس‌های دسته‌بندی */
 .category-image:hover {
     transform: scale(1.1);
     transition: transform 0.3s ease-in-out;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
-/* نمونه استایل برای انیمیشن ورودی دسته‌بندی‌ها */
 .categories-slider [data-aos] {
-    opacity: 0; /* برای انیمیشن ورود */
-    transform: translateY(20px); /* حرکت از پایین */
+    opacity: 0;
+    transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 .categories-slider [data-aos].aos-animate {
     opacity: 1;
     transform: translateY(0);
 }
-/* تنظیمات انیمیشن برای اسلایدر */
 .my-slideshow .v-carousel-item {
     transition: transform 0.5s ease-in-out;
 }
@@ -1688,7 +1583,7 @@ body {
     transform: scale(1.05) rotate(1deg);
 }
 .v-app {
-    animation: fadeIn 1s ease-in-out; /* انیمیشن ورود برای کل سایت */
+    animation: fadeIn 1s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -1702,7 +1597,6 @@ body {
     }
 }
 
-/* استایل‌های سفارشی برای بخش آگهی‌های میزبان */
 .featured-listing-swiper {
     width: 100%;
     height: 100%;
@@ -1731,13 +1625,13 @@ body {
 
 
 .main3-container {
-    position: relative; /* اطمینان حاصل کنید که موقعیت ثابت نیست */
-    width: 100%; /* عرض اصلی */
-    background-color: rgba(0, 0, 0, 0.9); /* رنگ پس‌زمینه */
+    position: relative;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
     border-radius: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin-top: 20px; /* ایجاد فاصله از بالا */
+    margin-top: 20px;
     overflow: hidden;
     animation: slideIn 1s ease-out;
 }
@@ -1748,11 +1642,10 @@ body {
 
 }
 
-/* تنظیم انیمیشن برای بارگذاری main3 */
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateY(20px); /* حرکت از پایین */
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -1761,7 +1654,6 @@ body {
 }
 
 
-/* انیمیشن fade-in برای main3 */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -1775,11 +1667,10 @@ body {
     animation: fadeIn 1s ease-out;
 }
 
-/* استایل برای تصاویر در main3 */
 .featured-listing-swiper .swiper-slide .image {
-    width: 90%; /* کاهش عرض تصاویر */
+    width: 90%;
     height: auto;
-    margin: 0 auto; /* مرکز چین کردن تصاویر */
+    margin: 0 auto;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -1843,7 +1734,7 @@ html, body {
     margin-bottom: 16px;
     padding-left: 8px;
     padding-right: 8px;
-    background-color: rgba(255, 255, 255, 0.4); /* پس‌زمینه شیشه‌ای (نیمه‌شفاف) */
+    background-color: rgba(255, 255, 255, 0.4);
 }
 .hover-title2 {
     font-size: 14px;
@@ -1894,7 +1785,7 @@ html, body {
 }
 
 .logo-style:hover {
-    transform: scale(1.1); /* بزرگ‌تر شدن لوگو در هنگام هاور */
+    transform: scale(1.1);
 }
 .whatsapp-float {
     position: fixed;
@@ -1909,8 +1800,8 @@ html, body {
     align-items: center;
     width: 50px;
     height: 50px;
-    background-color: #25D366; /* رنگ سبز واتس‌اپ */
-    color: white; /* رنگ سفید آیکن */
+    background-color: #25D366;
+    color: white;
     border-radius: 50%;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
@@ -1919,45 +1810,40 @@ html, body {
 
 .whatsapp-icon {
     font-size: 24px;
-    color: white; /* اطمینان از سفید بودن آیکن */
+    color: white;
 }
-/* Container for social icons */
 .social-icons2 {
     display: flex;
     justify-content: center;
-    gap: 20px; /* فاصله بین آیکن‌ها */
-    margin-top: 20px; /* فاصله از بالای صفحه */
+    gap: 20px;
+    margin-top: 20px;
 }
 
-/* Style for individual social icons */
 .social-icon2 {
-    font-size: 36px; /* اندازه بزرگ آیکن‌ها */
-    color: white; /* رنگ آیکن‌ها */
-    transition: transform 0.3s ease, color 0.3s ease; /* افکت‌های تغییر */
-    cursor: pointer; /* تغییر نشانگر موس به اشاره‌گر */
+    font-size: 36px;
+    color: white;
+    transition: transform 0.3s ease, color 0.3s ease;
+    cursor: pointer;
 }
 
-/* Hover effect for social icons */
 .social-icons2 a:hover .social-icon2 {
-    transform: scale(1.2); /* بزرگ‌تر شدن آیکن هنگام hover */
-    color: #00ff00; /* تغییر رنگ آیکن هنگام hover (مثلاً سبز) */
-    /* می‌توانید رنگ دلخواه خود را وارد کنید */
+    transform: scale(1.2);
+    color: #00ff00;
 }
 
-/* Optional: Add shadow effect to icons */
 .social-icon2 {
-    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* سایه کوچک برای آیکن‌ها */
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .login-modal-app-bar {
-    z-index: 1100; /* مقدار بیشتر از z-index منو همبرگری */
+    z-index: 1100;
 }
 
 .v-navigation-drawer {
-    z-index: 1000; /* مقدار کمتر از اپ بار مودال */
+    z-index: 1000;
 }
 .login-modal-app-bar {
-    position: fixed; /* یا absolute بسته به نیاز */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -1968,7 +1854,7 @@ html, body {
         top: 0;
         left: 0;
         right: 0;
-        z-index: 1100; /* مطمئن شوید مقدار z-index بیشتر از مقدار منوی همبرگری است */
+        z-index: 1100;
     }
 }
 

@@ -25,7 +25,7 @@ class CustomRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        // اینجا اعتبارسنجی خود را بنویسید
+        //  اعتبارسنجی
         return $value === 'laravel'; // مثال
     }
 

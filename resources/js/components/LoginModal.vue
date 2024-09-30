@@ -1,14 +1,11 @@
 <template>
     <div>
-        <!-- مودال لاگین -->
         <v-dialog v-model="showModal" persistent max-width="400" overlay-click-close app style="border-radius: 30px" @close="closeModal">
             <v-card class="rounded-card">
-                <!-- نمایش لودینگ -->
                 <div v-if="isLoading" class="loading-container">
                     <v-progress-circular indeterminate color="warning"></v-progress-circular>
                 </div>
 
-                <!-- محتوای اصلی -->
                 <div v-else>
                     <v-app-bar
                         color="rgba(0, 0, 0, 0.5)"
@@ -26,7 +23,6 @@
                         </v-btn>
                     </v-app-bar>
 
-                    <!-- اسلایدشو اول -->
                     <div class="primary-slideshow">
                         <div v-if="items.length > 0" class="slide-wrapper">
                             <v-sheet class="d-flex flex-column align-center justify-center" :class="themeClass">
@@ -39,12 +35,10 @@
                     </div>
 
 
-                    <!-- لوگو -->
                     <div class="logo-container">
                         <img :src="logo" alt="Company Logo" class="logo" />
                     </div>
 
-                    <!-- اسلایدشو دوم -->
                     <div class="secondary-slideshow">
                         <div v-if="items2.length > 0" class="slide-wrapper">
                             <v-sheet class="d-flex flex-column align-center justify-center" style="background-color: transparent">
@@ -55,7 +49,6 @@
                         </div>
                     </div>
 
-                    <!-- دکمه‌ها -->
                     <v-card class="rounded-card">
                         <v-card-actions class="d-flex flex-column align-center">
                             <v-btn class="my-2 other-methods-btn" @click="openLogin2Modal">
@@ -73,14 +66,12 @@
         </v-dialog>
 
 
-        <!-- مودال ثبت‌نام -->
         <v-dialog v-model="showRegisterModal" persistent max-width="400" overlay-click-close app style="border-radius: 30px">
             <v-card class="rounded-card">
                 <div v-if="isLoading" class="loading-container">
                     <v-progress-circular indeterminate color="warning"></v-progress-circular>
                 </div>
 
-                <!-- محتوای اصلی -->
                 <div v-else>
                     <v-app-bar
                         color="rgba(0, 0, 0, 0.5)"
@@ -100,7 +91,6 @@
                     </v-app-bar>
 
 
-                    <!-- محتوای ثبت‌نام -->
                     <div class="register-content">
                         <h2 class="register-title">{{ translations[language].home.createAccount }}</h2>
                         <v-sheet class="register-box">
@@ -120,17 +110,12 @@
         </v-dialog>
 
 
-        <!-- مودال ورود به حساب -->
         <v-dialog v-model="showLoginModal" persistent max-width="400" overlay-click-close app style="border-radius: 30px">
             <v-card class="rounded-card" style="position: relative;">
-                <!-- انیمیشن بارگذاری -->
                 <div v-if="isLoading" class="loading-container">
                     <v-progress-circular indeterminate color="warning"></v-progress-circular>
                 </div>
-
-                <!-- محتوای اصلی -->
                 <div v-else>
-                    <!-- لوگو و عنوان -->
                     <v-app-bar
                         color="rgba(0, 0, 0, 0.5)"
                         dark
@@ -148,13 +133,11 @@
                     </v-app-bar>
 
                     <div class="modal-content">
-                        <!-- لوگو -->
                         <div class="logo-container">
                             <img :src="logo" alt="Company Logo" class="logo" />
                         </div>
-                        <h2 class="modal-title" >{{ translations[language].home.title }}</h2>
+                        <h2 class="modal-title">{{ translations[language].home.title }}</h2>
 
-                        <!-- فرم ورود -->
                         <v-sheet class="form-container">
                             <h2 class="form-title">{{ translations[language].home.welcome }}</h2>
                             <p class="form-subtitle">{{ translations[language].home.signIn2 }}</p>
@@ -164,7 +147,8 @@
                                     class="form-input"
                                     :label="translations[language].home.email"
                                     prepend-icon="mdi-email"
-                                    autocomplete="email"
+                                    v-model="email"
+                                autocomplete="email"
                                 ></v-text-field>
 
                                 <v-text-field
@@ -175,7 +159,8 @@
                                     :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                                     :type="showPassword ? 'text' : 'password'"
                                     @click:append="togglePasswordVisibility"
-                                    autocomplete="current-password"
+                                    v-model="password"
+                                autocomplete="current-password"
                                 ></v-text-field>
 
                                 <v-checkbox
@@ -190,29 +175,22 @@
                                 >{{ translations[language].home.submit2 }}</v-btn>
                             </form>
 
-
                             <p class="forgot-password">
-                                <!-- لینک برای باز کردن مودال بازیابی رمز عبور -->
                                 <a href="#" @click.prevent="openForgotPasswordModal">{{ translations[language].home.forgotPassword }}</a>
                             </p>
-
                         </v-sheet>
                     </div>
                 </div>
             </v-card>
         </v-dialog>
 
-        <!-- مودال بازیابی رمز عبور -->
         <v-dialog v-model="showForgotPasswordModal" persistent max-width="400" height="500" overlay-click-close app style="border-radius: 30px">
             <v-card class="rounded-card" style="position: relative;">
-                <!-- انیمیشن بارگذاری -->
                 <div v-if="isLoading" class="loading-container">
                     <v-progress-circular indeterminate color="warning"></v-progress-circular>
                 </div>
 
-                <!-- محتوای اصلی -->
                 <div v-else>
-                    <!-- اپ بار بازیابی رمز عبور -->
                     <v-app-bar
                         class="reset-password-app-bar"
                         color="rgba(0, 0, 0, 0.5)"
@@ -230,13 +208,11 @@
                     </v-app-bar>
 
                     <div class="modal-content">
-                        <!-- لوگو -->
                         <div class="logo-container">
                             <img :src="logo" alt="Company Logo" class="logo" />
                         </div>
                         <h3 class="modal-title">{{ translations[language].home.title }}</h3>
 
-                        <!-- فرم بازیابی رمز عبور -->
                         <v-sheet class="form-container">
                             <h2 class="form-title">{{ translations[language].home.rememberPassword }}</h2>
                             <p class="form-subtitle">{{ translations[language].home.instruction }}</p>
@@ -284,29 +260,29 @@ export default {
                 fa: faTranslations,
                 en: enTranslations
             },
-            items: faSlides.home.slides, // استفاده از آرایه اسلایدها برای نمایش
+            items: faSlides.home.slides,
             logo: "/images/logo.png",
-            items2: faSlides.home.slides2, // استفاده از آرایه اسلایدها برای نمایش
-            currentSlide1: 0, // متغیر برای کنترل اسلاید جاری اول
-            currentSlide2: 0, // متغیر برای کنترل اسلاید جاری دوم
+            items2: faSlides.home.slides2,
+            currentSlide1: 0,
+            currentSlide2: 0,
             showModal: true,
             showRegisterModal: false,
             showPassword: false,
-            token: null, // ذخیره توکن
+            token: null,
 
         };
     },
     mounted() {
         const savedLanguage = localStorage.getItem('language');
         if (savedLanguage) {
-            this.language = savedLanguage; // بازیابی زبان ذخیره شده
+            this.language = savedLanguage;
         }
         this.loadSlides(this.language);
         this.loadSlides2(this.language);
 
         setTimeout(() => {
             this.isLoading = false;
-        }, 1000); // تاخیر 1 ثانیه برای نمایش لودینگ
+        }, 1000);
 
         this.startSlideShow1();
         this.startSlideShow2();
@@ -316,100 +292,91 @@ export default {
         startSlideShow1() {
             setInterval(() => {
                 this.currentSlide1 = (this.currentSlide1 + 1) % this.items.length;
-            }, 3000); // تغییر اسلاید اول هر ۳ ثانیه
+            }, 3000);
         },
         startSlideShow2() {
             setInterval(() => {
                 this.currentSlide2 = (this.currentSlide2 + 1) % this.items2.length;
-            }, 3000); // تغییر اسلاید دوم هر ۳ ثانیه
+            }, 3000);
         },
 
         loginWithGoogle() {
-            // عملکرد ورود با حساب گوگل
         },
         showOtherMethodsModal() {
-            // نمایش مودال روش‌های دیگر
         },
         toggleLanguage() {
             this.language = this.language === 'fa' ? 'en' : 'fa';
-            localStorage.setItem('language', this.language); // ذخیره زبان در LocalStorage
-            this.loadSlides(this.language); // بارگذاری اسلایدها با زبان جدید
+            localStorage.setItem('language', this.language);
+            this.loadSlides(this.language);
             this.loadSlides2(this.language);
         },
         loadSlides(language) {
             if (language === "fa") {
-                this.items = faSlides.home.slides; // بارگذاری اسلایدهای فارسی
+                this.items = faSlides.home.slides;
             } else if (language === "en") {
-                this.items = enSlides.home.slides; // بارگذاری اسلایدهای انگلیسی
+                this.items = enSlides.home.slides;
             }
         },
         loadSlides2(language) {
             if (language === "fa") {
-                this.items2 = faSlides.home.slides2; // بارگذاری اسلایدهای فارسی
+                this.items2 = faSlides.home.slides2;
             } else if (language === "en") {
-                this.items2 = enSlides.home.slides2; // بارگذاری اسلایدهای انگلیسی
+                this.items2 = enSlides.home.slides2;
             }
         },
         openRegisterModal() {
             this.showModal = false;
             this.showRegisterModal = true;
-            this.showloginModal = false; // اطمینان از بستن مودال لاگین 2
+            this.showloginModal = false;
         },
         closeRegisterModal() {
             this.showRegisterModal = false;
-            this.showModal = true; // باز کردن مودال لاگین اصلی
+            this.showModal = true;
         },
         openLogin2Modal() {
             this.showModal = false;
             this.showRegisterModal = false;
-            this.showLoginModal = true; // اطمینان از نام صحیح متغیر
-            this.closeForgotPasswordModal(); // بستن مودال فراموشی رمز عبور
+            this.showLoginModal = true;
+            this.closeForgotPasswordModal();
         },
         closeLogin2Modal() {
-            this.showLoginModal = false; // اطمینان از نام صحیح متغیر
-            this.showModal = true; // باز کردن مودال لاگین اصلی
+            this.showLoginModal = false;
+            this.showModal = true;
         },
         closeModal() {
             this.showModal = false;
             this.showRegisterModal = false;
-            this.showloginModal = false; // بستن همه مودال‌ها
+            this.showloginModal = false;
         },
 
         togglePasswordVisibility() {
             this.showPassword = !this.showPassword;
         },
         showRegisterModal() {
-            // Logic for showing register modal
         },
         showloginModal() {
-            this.closeRegisterModal(); // بستن مودال ثبت‌نام
+            this.closeRegisterModal();
             this.closeModal();
-            this.showloginModal = true; // باز کردن مودال لاگین 2
+            this.showloginModal = true;
         },
 
-        // باز کردن مودال فراموشی رمز عبور
         openForgotPasswordModal() {
             this.showForgotPasswordModal = true;
         },
-        // بستن مودال فراموشی رمز عبور
         closeForgotPasswordModal() {
             this.showForgotPasswordModal = false;
         },
-        // ارسال لینک بازیابی
         sendResetLink() {
             if (this.email) {
                 this.isLoading = true;
-                // ارسال درخواست به سرور برای بازیابی رمز عبور
-                // فرض کنید از axios استفاده می‌کنید
                 this.$axios.post('/api/reset-password', { email: this.email })
                     .then(response => {
-                        // موفقیت‌آمیز
                         this.$notify.success('لینک بازیابی به ایمیل شما ارسال شد.');
-                        this.email = ''; // پاک کردن ایمیل وارد شده
-                        this.closeForgotPasswordModal(); // بستن مودال
+                        this.email = '';
+                        this.closeForgotPasswordModal();
                     })
                     .catch(error => {
-                        // خطا
+
                         this.$notify.error('مشکلی پیش آمده است. لطفاً دوباره امتحان کنید.');
                     })
                     .finally(() => {
@@ -428,29 +395,27 @@ export default {
                     surname: this.surname,
                     email: this.email,
                     password: this.password,
-                    password_confirmation: this.password_confirmation  // افزودن فیلد password_confirmation
                 });
 
                 console.log('Registration successful:', response);
 
-                // نمایش اعلان موفقیت‌آمیز
                 ElNotification({
                     title: 'Success',
                     message: 'Registration successful!',
-                    type: 'success'
+                    type: 'success',
+                    center: true
                 });
 
-                // باز کردن مودال لاگین
                 this.showLoginModal = true;
 
             } catch (error) {
                 console.error('Error during registration:', error.response ? error.response.data : error.message);
 
-                // نمایش اعلان خطا
                 ElNotification({
                     title: 'Error',
                     message: 'An error occurred during registration.',
-                    type: 'error'
+                    type: 'error',
+                    center: true
                 });
             }
         },
@@ -458,19 +423,37 @@ export default {
             try {
                 const data = {
                     email: this.email,
-                    password: this.password
+                    password: this.password,
                 };
-                console.log('Sending data:', data); // نمایش داده‌های ارسال‌شده
+                console.log('Sending data:', data);
 
                 const response = await axios.post('/api/login', data);
                 if (response.data.success) {
-                    this.$router.push('/dashboard');
+                    ElNotification({
+                        title: 'Success',
+                        message: 'Login successful!',
+                        type: 'success',
+                        center: true,
+                    });
+
+                    window.location.href = '/dashboard';
                 } else {
-                    alert('Login failed: ' + response.data.message);
+                    ElNotification({
+                        title: 'Error',
+                        message: 'Login failed: ' + response.data.message,
+                        type: 'error',
+                        center: true,
+                    });
                 }
             } catch (error) {
                 if (error.response) {
-                    console.log('Error response:', error.response.data); // نمایش پیام خطا
+                    console.log('Error response:', error.response.data);
+                    ElNotification({
+                        title: 'Error',
+                        message: 'An error occurred during login.',
+                        type: 'error',
+                        center: true,
+                    });
                 } else {
                     console.log('Error:', error.message);
                 }
@@ -487,31 +470,30 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px; /* ارتفاع مورد نظر برای لودینگ */
+    height: 200px;
 }
 
 .rounded-card {
     border-radius: 45px;
-    padding-top: 0; /* اضافه کردن این مقدار برای ایجاد فضای کافی برای اپ بار */
+    padding-top: 0;
 }
 
 .main-background {
-    background-color: #000; /* پس‌زمینه مشکی */
-    color: white; /* متن سفید */
-    min-height: 100vh; /* حداقل ارتفاع صفحه */
+    background-color: #000;
+    color: white;
+    min-height: 100vh;
 }
 .v-application .v-app-bar {
-    top: 0 !important; /* مطمئن شوید که اپ بار همیشه بالا قرار می‌گیرد */
+    top: 0 !important;
     left: 0;
     right: 0;
     position: absolute;
-    z-index: 10; /* عددی بالا برای اطمینان از اینکه اپ بار بالاتر قرار می‌گیرد */
+    z-index: 10;
 
 }
 
-/* کلاس مربوط به افکت شیشه‌ای */
 .blur-background {
-    backdrop-filter: blur(8px); /* تنظیم محو شدن بیشتر */
+    backdrop-filter: blur(8px);
     transition: backdrop-filter 0.6s ease;
 }
 
@@ -522,9 +504,9 @@ export default {
     right: 0;
     background-color: transparent;
     backdrop-filter: blur(5px);
-    color: white; /* رنگ متن */
-    padding: 20px; /* افزایش فاصله داخل */
-    text-align: center; /* تراز مرکز */
+    color: white;
+    padding: 20px;
+    text-align: center;
     margin-bottom: 20px;
 }
 
@@ -542,9 +524,9 @@ export default {
 }
 
 .rounded-card {
-    border-radius: 30px; /* افزایش گردی گوشه‌ها */
+    border-radius: 30px;
     background-color: black;
-    overflow: hidden; /* برای جلوگیری از بیرون زدگی محتوای گرد گوشه‌ها */
+    overflow: hidden;
 }
 
 .banner-image {
@@ -561,7 +543,7 @@ export default {
 }
 
 .modal-close-btn v-icon {
-    font-size: 18px; /* تنظیم اندازه آیکون */
+    font-size: 18px;
 }
 
 .overlay {
@@ -601,11 +583,11 @@ export default {
 
     }
     .v-icon {
-        color: white !important; /* تنظیم رنگ آیکون‌ها به مشکی */
+        color: white !important;
     }
 
     .logo-container {
-        margin-top: 30px; /* مقدار جدید برای لوگو در موبایل */
+        margin-top: 30px;
     }
     .primary-slideshow{
         margin-top: -50px;
@@ -625,14 +607,14 @@ export default {
 }
 
 .v-navigation-drawer {
-    z-index: 1000; /* مقدار کمتر از اپ بار مودال */
+    z-index: 1000;
 }
 .login-modal-app-bar {
-    position: fixed; /* یا absolute بسته به نیاز */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1100; /* مقدار بیشتر از z-index منو همبرگری */
+    z-index: 1100;
 
 }
 .logo-container {
@@ -642,25 +624,25 @@ export default {
     align-content: center;
     align-items: center;
     padding-left:100px;
-    z-index: 10; /* اضافه کردن z-index برای اطمینان از قرارگیری در لایه صحیح */
+    z-index: 10;
 
 }
 
 .logo {
-    max-height: 60px; /* ارتفاع لوگو */
-    max-width: 100%; /* عرض لوگو */
+    max-height: 60px;
+    max-width: 100%;
 }
 
 
 
 .secondary-slideshow {
-    margin-top: 15px; /* ایجاد فاصله بین لوگو و اسلایدشو دوم */
+    margin-top: 15px;
     text-align: center;
 }
 
 .v-carousel .v-carousel__prev,
 .v-carousel .v-carousel__next {
-    display: none !important; /* مخفی کردن دکمه‌های ناوبری */
+    display: none !important;
 }
 
 .primary-slideshow, .secondary-slideshow {
@@ -690,50 +672,50 @@ export default {
 }
 
 .my-2 {
-    display: block; /*  قرارگیری زیر هم */
+    display: block;
     justify-content: center;
     align-items: center;
-    width: 80%; /* تنظیم عرض یکسان برای دکمه‌ها */
-    max-width: 250px; /* حداکثر عرض برای دکمه‌ها */
-    background: linear-gradient(135deg, #211C6A, #3795BD); /* رنگ گرادیان */
-    color: white; /* رنگ متن */
-    font-size: 16px; /* اندازه فونت */
-    font-weight: bold; /* ضخامت فونت */
-    border: none; /* حذف حاشیه */
-    border-radius: 25px; /* گردی گوشه‌ها */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* سایه دکمه */
-    cursor: pointer; /* تغییر شکل موس به نشانه‌ی دست */
-    transition: all 0.3s ease; /* انتقال برای افکت‌ها */
-    text-transform: uppercase; /* تبدیل متن به حروف بزرگ */
-    text-align: center; /* تراز وسط برای متن */
+    width: 80%;
+    max-width: 250px;
+    background: linear-gradient(135deg, #211C6A, #3795BD);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    text-align: center;
 }
 .my-3{
-    display: block; /* تغییر از inline-flex به block برای اطمینان از قرارگیری صحیح زیر هم */
+    display: block;
     justify-content: center;
     align-items: center;
-    width: 80%; /* تنظیم عرض یکسان برای دکمه‌ها */
-    max-width: 250px; /* حداکثر عرض برای دکمه‌ها */
-    background: linear-gradient(135deg, #365E32, #114232); /* رنگ گرادیان */
-    color: white; /* رنگ متن */
-    font-size: 16px; /* اندازه فونت */
-    font-weight: bold; /* ضخامت فونت */
-    border: none; /* حذف حاشیه */
-    border-radius: 25px; /* گردی گوشه‌ها */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* سایه دکمه */
-    cursor: pointer; /* تغییر شکل موس به نشانه‌ی دست */
-    transition: all 0.3s ease; /* انتقال برای افکت‌ها */
-    text-transform: uppercase; /* تبدیل متن به حروف بزرگ */
-    text-align: center; /* تراز وسط برای متن */
+    width: 80%;
+    max-width: 250px;
+    background: linear-gradient(135deg, #365E32, #114232);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    text-align: center;
 }
 .my-2:hover .my-3:hover {
-    background: linear-gradient(135deg, #CDF5FD, #387F39); /* تغییر گرادیان در حالت هاور */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* افزایش سایه در حالت هاور */
-    transform: translateY(-2px); /* تغییر مکان برای افکت برجسته‌سازی */
+    background: linear-gradient(135deg, #CDF5FD, #387F39);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
 }
 
 .my-2:active .my-3:active {
-    transform: translateY(1px); /* تغییر مکان در حالت کلیک شده */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* کاهش سایه در حالت کلیک شده */
+    transform: translateY(1px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .register-content {
@@ -753,7 +735,7 @@ export default {
 .register-box {
     background-color: #E2F6CA;
     padding: 20px;
-    border-radius: 25px 25px 0 0; /* گردی فقط گوشه‌های بالا */
+    border-radius: 25px 25px 0 0;
     margin-top: 20px;
 }
 
@@ -777,32 +759,32 @@ export default {
     width: 80%;
 }
 
-/* استایل‌های موبایل */
+
 @media (max-width: 768px) {
     .rounded-card {
-        transform: scale(0.9); /* کاهش اندازه مودال به 80% */
-        transform-origin: center; /* تعیین مرکز مقیاس‌گذاری */
+        transform: scale(0.9);
+        transform-origin: center;
     }
 
     .register-title {
-        font-size: 20px; /* اندازه فونت عنوان برای موبایل */
+        font-size: 20px;
     }
 
     .register-box {
-        padding: 16px; /* کاهش فاصله داخلی مستطیل */
+        padding: 16px;
     }
 
     .signin-text {
-        font-size: 16px; /* اندازه فونت Sign in برای موبایل */
+        font-size: 16px;
     }
 
     .signin-subtext {
-        font-size: 12px; /* اندازه فونت Fill in your account details برای موبایل */
+        font-size: 12px;
     }
 
     .register-submit-btn {
-        font-size: 14px; /* اندازه فونت دکمه ثبت نام */
-        padding: 12px 20px; /* فاصله داخلی دکمه */
+        font-size: 14px;
+        padding: 12px 20px;
     }
 }
 .modal-content {
@@ -812,8 +794,8 @@ export default {
 
 .logo-container {
     margin: 0 auto;
-    width: 100px; /* تنظیم عرض لوگو */
-    height: 100px; /* تنظیم ارتفاع لوگو */
+    width: 100px;
+    height: 100px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 50%;
     overflow: hidden;
@@ -871,14 +853,14 @@ export default {
     text-decoration: underline;
 }
 .small-text {
-    font-size: 14px; /* می‌توانید اندازه مورد نظر خود را تنظیم کنید */
+    font-size: 14px;
 }
 
 .reset-password-app-bar {
-    position: fixed; /* اطمینان از ثابت بودن موقعیت */
+    position: fixed;
     left: 0;
     right: 0;
-    z-index: 1100; /* اطمینان از نمایش بالای سایر عناصر */
+    z-index: 1100;
 }
 
 

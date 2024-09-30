@@ -11,7 +11,8 @@ import router from '../../router/index.js';
 import axios from 'axios';
 import Notifications from '@kyvg/vue3-notification';
 import ElementPlus from 'element-plus';
-import 'element-plus/dist/index.css'; // مسیر جدید
+import 'element-plus/dist/index.css';
+import DashboardComponent from './components/Dashboard.vue';
 
 const vuetify = createVuetify({
     components,
@@ -36,12 +37,14 @@ const vuetify = createVuetify({
     },
 });
 
-// تنظیمات Axios Interceptor
+
+
+
+axios.defaults.baseURL = 'http://127.0.0.1:8001';
+
 axios.interceptors.request.use(config => {
-    // تنظیم هدرهای پیش‌فرض برای هر درخواست
     config.headers['Accept'] = 'application/json';
 
-    // اضافه کردن توکن اگر در localStorage موجود است
     const token = localStorage.getItem('authToken');
     if (token) {
         config.headers['Authorization'] = `Bearer ${token}`;
@@ -52,14 +55,28 @@ axios.interceptors.request.use(config => {
     return Promise.reject(error);
 });
 
-// ایجاد برنامه Vue با Vuetify و Router
-const app = createApp(App);
-app.use(vuetify);
-app.use(router);
-app.use(Notifications);
-app.use(ElementPlus);
+if (document.getElementById('app')) {
+    const app = createApp(App);
+    app.use(vuetify);
+    app.use(router);
+    app.use(Notifications);
+    app.use(ElementPlus);
+    app.config.globalProperties.$axios = axios;
 
-app.config.globalProperties.$axios = axios;
+    app.mount('#app');
+}
 
-// راه‌اندازی برنامه
-app.mount('#app');
+if (document.getElementById('dashboard')) {
+
+    const app = createApp(DashboardComponent);
+    app.use(vuetify);
+    app.use(router);
+    app.use(Notifications);
+    app.use(ElementPlus);
+    app.component('Dashboardcomponent', DashboardComponent);
+
+    app.config.globalProperties.$axios = axios;
+
+    app.mount('#dashboard');
+
+}

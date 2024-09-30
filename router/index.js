@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../resources/js/components/Home.vue';
-import Dashboard from '../resources/js/components/Dashboard.vue';
+import Dashboardcomponent from '../resources/js/components/Dashboard.vue';
 import LoginModal from '../resources/js/components/LoginModal.vue';
+
+
 
 const routes = [
     {
@@ -11,9 +13,8 @@ const routes = [
     },
     {
         path: '/dashboard',
-        name: 'Dashboard',
-        component: Dashboard,
-        meta: { requiresAuth: true },
+        name: 'dashboard',
+        component: Dashboardcomponent,
     },
     {
         path: '/login',

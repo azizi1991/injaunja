@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\DTOs\UserDTO;
 use App\Http\Services\AuthService;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -15,17 +16,18 @@ class AuthController extends Controller
         $this->authService = $authService;
     }
 
-    // متد ثبت‌نام
     public function register(Request $request)
     {
         $request->validate([
             'name' => 'required|string',
+            'surname' => 'required|string',
             'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed',
+            'password' => 'required',
         ]);
 
         $userDTO = new UserDTO(
             $request->name,
+            $request->surname,
             $request->email,
             $request->password
         );
@@ -36,17 +38,13 @@ class AuthController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required'
         ]);
 
-        // ساختن DTO برای کاربر
-        $userDTO = new UserDTO(
-            null, // نام را نمی‌فرستید چون در لاگین نیازی به آن نیست
-            $request->email,
-            $request->password
-        );
 
+        $userDTO = new UserDTO(null,null, $request->email, $request->password);
         return $this->authService->login($userDTO);
     }
+
 
 }

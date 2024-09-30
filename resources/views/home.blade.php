@@ -11,8 +11,9 @@
     </head>
 <body>
 <div id="app">
-
+    <Home></Home>
 </div>
+
 <div class="whatsapp-float">
     <a href="https://wa.me/989035044816" target="_blank" class="whatsapp-link">
         <i class="fab fa-whatsapp whatsapp-icon"></i>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>InjaOnja</title>
+    <title>injaunja</title>
     <link rel="icon" href="{{ asset('images/logo.png') }}" />
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">

@@ -9,8 +9,6 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'surname', 'email', 'password',
     ];
-
-    // اگر متدهای اضافی دارید، آن‌ها را اینجا تعریف کنید
 }
